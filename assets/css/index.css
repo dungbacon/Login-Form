@@ -1,0 +1,247 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;1,100&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-input: rgb(209, 209, 209);
+    --color-inputbg: #4786FF;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus,
+button:focus {
+    outline: none;
+}
+
+input::placeholder {
+    color: rgb(160, 163, 166);
+}
+
+i {
+    font-size: 20px;
+}
+
+.wrapper {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(247, 247, 247);
+    display: flex;
+}
+
+.container {
+    width: 60%;
+    height: 70%;
+    background-color: #fff;
+    margin: 0 auto;
+    display: flex;
+    align-self: center;
+    border-radius: 0.5rem;
+    box-shadow: 5px 5px 10px #EEEEEE;
+}
+
+.container .login-section {
+    width: 50%;
+}
+
+.login-section-content {
+    width: 80%;
+    margin: 90px auto;
+
+}
+
+.input-section {
+    width: 80%;
+    height: 50px;
+    border: 1px solid black;
+    display: flex;
+    align-content: space-between;
+    border-radius: 10px;
+    border-color: var(--color-input);
+    margin: 20px auto;
+}
+
+.input-section i {
+    padding: 15px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    color: var(--color-input);
+    border-right: 1px solid var(--color-input);
+}
+
+.check-submit-btn,
+.side-service {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 25px auto;
+}
+
+.side-service a {
+    text-decoration: none;
+    color: #4786FF;
+}
+
+
+.side-service a:nth-child(2) {
+    color: rgb(148, 152, 155);
+}
+
+.check-submit-btn>input {
+    padding: 20px 25px;
+    border-radius: 10px;
+    border: none;
+    background-color: var(--color-inputbg);
+    color: #fff;
+}
+
+input[type=checkbox] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    outline: none;
+    content: none;
+}
+
+input[type=checkbox]:before {
+    font-family: "FontAwesome";
+    content: "\f00c";
+    font-size: 20px;
+    color: transparent !important;
+    background: #fff;
+    display: block;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--color-input);
+    margin-right: 7px;
+    border-radius: 5px;
+}
+
+input[type=checkbox]:checked:before {
+    color: black !important;
+}
+
+.forgot-password {
+    display: flex;
+    align-items: center;
+}
+
+.forgot-password span {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: rgb(160, 163, 166);
+}
+
+.bi-eye-fill {
+    border: none !important;
+}
+
+
+.input-section input {
+    width: 80%;
+    padding: 15px 10px;
+    border: none;
+    background-color: #fff;
+}
+
+.theme-img {
+    width: 50%;
+    max-height: 100%;
+    background-image: url("../img/pxfuel.com.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.separate-line {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px auto;
+    padding: 0 40px;
+}
+
+.separate-line span {
+    font-family: 'Roboto';
+    font-weight: 500;
+    font-size: 0.8rem;
+    color: rgb(160, 163, 166);
+}
+
+.separate-line .line {
+    width: 45%;
+    height: 1px;
+    background-color: var(--color-input);
+}
+
+.login-with-section .login-with-section-item {
+    width: 80%;
+    height: 50px;
+    border: none;
+    display: flex;
+    color: #fff;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.login-with-section-item a {
+    width: 80%;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 50px;
+}
+
+.login-with-section-item .fb {
+    background-color: rgb(38, 60, 104);
+}
+
+.login-with-section-item .tw{
+    background-color: rgb(6,149,203);
+}
+
+.login-with-section-item .gg{
+    background-color: rgb(197,49,38);
+}
+
+
+.login-with-item-icon {
+    width: 20%;
+    background-color: #EEEEEE;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-with-fb {
+    background-color: rgb(59, 89, 152);
+}
+
+.login-with-twitter{
+    background: rgb(0,172,237);
+}
+
+.login-with-google{
+    background: rgb(244,67,54);
+}
