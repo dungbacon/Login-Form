@@ -77,6 +77,13 @@ i {
     border-right: 1px solid var(--color-input);
 }
 
+.input-password i:hover {
+    color: #000;
+    cursor: pointer;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
+}
+
 .check-submit-btn,
 .side-service {
     width: 80%;
@@ -85,6 +92,14 @@ i {
     justify-content: space-between;
     align-items: center;
     margin: 25px auto;
+}
+
+.submit-btn:hover {
+    cursor: pointer;
+    background-color: rgb(240, 203, 223);
+    color: #000;
+    transition: all .4s ease;
+    -webkit-transition: all .4s ease;
 }
 
 .side-service a {
@@ -103,6 +118,8 @@ i {
     border: none;
     background-color: var(--color-inputbg);
     color: #fff;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
 }
 
 input[type=checkbox] {
@@ -203,7 +220,7 @@ input[type=checkbox]:checked:before {
     width: 80%;
     color: #fff;
     font-family: 'Roboto', sans-serif;
-    font-weight: 500;
+    font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     text-align: center;
@@ -214,12 +231,12 @@ input[type=checkbox]:checked:before {
     background-color: rgb(38, 60, 104);
 }
 
-.login-with-section-item .tw{
-    background-color: rgb(6,149,203);
+.login-with-section-item .tw {
+    background-color: rgb(6, 149, 203);
 }
 
-.login-with-section-item .gg{
-    background-color: rgb(197,49,38);
+.login-with-section-item .gg {
+    background-color: rgb(197, 49, 38);
 }
 
 
@@ -238,10 +255,10 @@ input[type=checkbox]:checked:before {
     background-color: rgb(59, 89, 152);
 }
 
-.login-with-twitter{
-    background: rgb(0,172,237);
+.login-with-twitter {
+    background: rgb(0, 172, 237);
 }
 
-.login-with-google{
-    background: rgb(244,67,54);
+.login-with-google {
+    background: rgb(244, 67, 54);
 }
