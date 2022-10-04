@@ -93,7 +93,11 @@ exports.protect = catchAsync(async (req, res, next) => {
     console.log(promise);
     const user = await User.findById({_id: promise.id});
     console.log(user);
-    console.log(promise.iat, new Date(user.passwordChangedAt).getTime()/1000);
+    const passwordChangedTime = new Date(user.passwordChangedAt).getTime()/1000;
+    console.log(promise.iat, passwordChangedTime);
+    if(user.ChangePasswordAfter(promise.iat, passwordChangedTime)){
+
+    }
     // jwt.verify(token, process.env.JWT_SECRET);
     // 3: Check if user is still valid
     // 4: set user
