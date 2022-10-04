@@ -1,10 +1,10 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+dotenv.config({ path: './config.env' });
 
 const globalErrorHandler = require('./controllers/ErrorController');
 const userRouter = require('./routes/userRoutes');
-dotenv.config({ path: './config.env' });
 
 mongoose.connect(process.env.DATABASE, {
     autoIndex: true,

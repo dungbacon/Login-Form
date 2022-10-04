@@ -20,15 +20,9 @@ const schema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: [true, 'Password must be provided!'],
         minLength: 4,
         select: false,
-        // validate: {
-        //     validate: (el) => {
-        //         return el.match(/^(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z]).{8}$/);
-        //     }, 
-        //     message: 'Password must contain at least 8 characters with alphanumeric characters and a special characters!'
-        // }
     },
     role: {
         type: String,
@@ -39,20 +33,39 @@ const schema = new mongoose.Schema({
         type: Boolean,
         default: true,
         select: false
+    },
+    passwordChangedAt: {
+        type: Date
+    },
+});
+
+schema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
+        next();
+    }
+    console.log('Encrypt password');
+    this.password = await bcrypt.hash(this.password, 12);
+});
+
+schema.pre('save', async function (next) {
+    const user = this;
+    if (user.isModified('password')) {
+        user.passwordChangedAt = Date.now();
+    } else {
+        next();
     }
 });
+
+schema.methods.ChangePasswordAfter = function(issueAtTime, changePasswordAt){
+    if(!this.changePasswordAt){
+        changePasswordAt = Date.now().getTime();
+    }
+    return issueAtTime > changePasswordAt;
+};
 
 schema.methods.correctPassword = async function (candidatePassword, userPassword) {
     return await bcrypt.compare(candidatePassword, userPassword);
-}
-
-schema.pre('save', async function (next) {
-    if (!this.isModified()) {
-        return next();
-    } else {
-        this.password = await bcrypt.hash(this.password, 12);
-    }
-});
+};
 
 const User = mongoose.model('User', schema);
 

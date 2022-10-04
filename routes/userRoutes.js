@@ -12,7 +12,7 @@ router.get('/login', (req, res, next) => {
     var options = {
         root: path.join('assets')
     };
-     
+
     var fileName = 'index.html';
     res.sendFile(fileName, options, function (err) {
         if (err) {
@@ -23,6 +23,9 @@ router.get('/login', (req, res, next) => {
         }
     });
 })
+
+router.get('/info', userController.protect, userController.getAllUser);
 router.post('/login', userController.login);
+router.post('/updatepassword/:id', userController.updatePassword);
 
 module.exports = router;
