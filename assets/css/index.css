@@ -12,6 +12,23 @@
 
 }
 
+@keyframes pop-up {
+    0% {
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.close {
+    display: none;
+}
+
+.open {
+    display: block;
+}
+
 input:focus,
 select:focus,
 textarea:focus,
@@ -30,19 +47,24 @@ i {
 .wrapper {
     width: 100vw;
     height: 100vh;
+    background-image: url('./../img/55273499_large1300.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     background-color: rgb(247, 247, 247);
     display: flex;
+    position: relative;
 }
 
 .container {
     width: 60%;
     height: 70%;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.9);
     margin: 0 auto;
     display: flex;
     align-self: center;
     border-radius: 0.5rem;
-    box-shadow: 5px 5px 10px #EEEEEE;
+    box-shadow: 5px 5px 10px #111936;
 }
 
 .container .login-section {
@@ -94,6 +116,23 @@ i {
     margin: 25px auto;
 }
 
+.side-service a {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    text-decoration: none;
+    color: #90abdf;
+}
+
+.side-service #register-now:hover {
+    color: #0e59e2;
+    cursor: pointer;
+}
+
+.side-service #forgot-password:hover {
+    color: #000;
+    cursor: pointer;
+}
+
 .submit-btn:hover {
     cursor: pointer;
     background-color: rgb(240, 203, 223);
@@ -101,12 +140,6 @@ i {
     transition: all .4s ease;
     -webkit-transition: all .4s ease;
 }
-
-.side-service a {
-    text-decoration: none;
-    color: #4786FF;
-}
-
 
 .side-service a:nth-child(2) {
     color: rgb(148, 152, 155);
@@ -148,12 +181,12 @@ input[type=checkbox]:checked:before {
     color: black !important;
 }
 
-.forgot-password {
+.Remember-me {
     display: flex;
     align-items: center;
 }
 
-.forgot-password span {
+.Remember-me span {
     font-family: 'Roboto';
     font-weight: 500;
     font-size: 0.8rem;
@@ -166,7 +199,7 @@ input[type=checkbox]:checked:before {
 
 
 .input-section input {
-    width: 80%;
+    width: 73%;
     padding: 15px 10px;
     border: none;
     background-color: #fff;
@@ -175,7 +208,7 @@ input[type=checkbox]:checked:before {
 .theme-img {
     width: 50%;
     max-height: 100%;
-    background-image: url("../img/pxfuel.com.jpg");
+    background-image: url('./../img/55273499_large1300.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -214,6 +247,7 @@ input[type=checkbox]:checked:before {
     border-bottom-right-radius: 10px;
     border-radius: 10px;
     margin: 10px auto;
+
 }
 
 .login-with-section-item a {
@@ -262,3 +296,40 @@ input[type=checkbox]:checked:before {
 .login-with-google {
     background: rgb(244, 67, 54);
 }
+
+.signup-form {
+    position: absolute;
+    width: 25%;
+    height: 70%;
+    background-color: antiquewhite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('./../img/55273499_large1300.jpg');
+    z-index: 1;
+}
+
+.signup-form-container {
+    line-height: 70%;
+    padding-top: 50px;
+}
+
+.close-btn i {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+

@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+
 dotenv.config({ path: './config.env' });
 
 const globalErrorHandler = require('./controllers/ErrorController');
@@ -10,6 +11,9 @@ mongoose.connect(process.env.DATABASE, {
     autoIndex: true,
 }).then(() => {
     console.log('Connected to database');
+}).catch((err) => {
+    console.log(err.message);
+    process.exit(1);
 });
 
 const app = express();

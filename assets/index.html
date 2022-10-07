@@ -28,7 +28,7 @@
                                 <i class="hover-eye bi bi-eye-fill"></i>
                             </div>
                             <div class="check-submit-btn">
-                                <div class="forgot-password">
+                                <div class="Remember-me">
                                     <input type="checkbox"> <span>Remember me</span>
                                 </div>
                                 <input class="submit-btn" type="submit" value="LOGIN">
@@ -36,8 +36,8 @@
                         </form>
                     </div>
                     <div class="side-service">
-                        <a href="#">Register now</a>
-                        <a href="#">Forgot password?</a>
+                        <a id="register-now" href="#">Register now</a>
+                        <a id="forgot-password" href="#">Forgot password?</a>
                     </div>
                     <div class="separate-line">
                         <div class="line"></div>
@@ -61,13 +61,69 @@
                             <div class="login-with-item-icon gg">
                                 <i class="fa-brands fa-google"></i>
                             </div>
-                            <a href="#">Login with google</a>
+                            <a href="/api/v1/users/login/google">Login with google</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="theme-img">
-                <!-- <img src="" alt=""> -->
+
+            </div>
+
+            <div class="overlay" onclick="off()"></div>
+
+            <div class="signup-form">
+                <div class="close-btn" onclick="off()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="signup-form-container">
+                    <form action="" method="post">
+                        <div class="input-section input-email">
+                            <i class="bi bi-person-circle"></i>
+                            <input type="text" name="email" placeholder="Username or email" />
+                        </div>
+                        <div class="input-section input-password">
+                            <i class="bi bi-key"></i>
+                            <input id="password" type="password" name="password" placeholder="Password">
+                            <i class="hover-eye bi bi-eye-fill"></i>
+                        </div>
+                        <div class="input-section input-password">
+                            <i class="bi bi-key"></i>
+                            <input id="password" type="password" name="password" placeholder="Re-enter password">
+                        </div>
+                        <div class="check-submit-btn">
+                            <div class="Remember-me">
+                                <input type="checkbox"> <span>Remember me</span>
+                            </div>
+                            <input class="submit-btn" type="submit" value="LOGIN">
+                        </div>
+                    </form>
+                    <div class="separate-line">
+                        <div class="line"></div>
+                        <span>or</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="login-with-section">
+                        <div class="login-with-fb login-with-section-item">
+                            <div class="login-with-item-icon fb">
+                                <i class="fa-brands fa-square-facebook"></i>
+                            </div>
+                            <a href="#">Sign up with facebook</a>
+                        </div>
+                        <div class="login-with-twitter login-with-section-item">
+                            <div class="login-with-item-icon tw">
+                                <i class="fa-brands fa-twitter"></i>
+                            </div>
+                            <a href="#">Sign up with twitter</a>
+                        </div>
+                        <div class="login-with-google login-with-section-item gg">
+                            <div class="login-with-item-icon gg">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <a href="#">Sign up with google</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
