@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css" />
+    <script src="https://kit.fontawesome.com/67b5c45612.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="container">
+            <div class="login-section">
+                <div class="login-section-content">
+                    <div class="login-form">
+                        <form action="/api/v1/users/login" method="post" autocomplete="off">
+                            <div class="input-section input-email">
+                                <i class="bi bi-person-circle"></i>
+                                <input type="text" name="email" placeholder="Username or email" />
+                            </div>
+                            <div class="input-section input-password">
+                                <i class="bi bi-key"></i>
+                                <input id="password" type="password" name="password" placeholder="Password">
+                                <i class="hover-eye bi bi-eye-fill"></i>
+                            </div>
+                            <div class="check-submit-btn">
+                                <div class="Remember-me">
+                                    <input type="checkbox"> <span>Remember me</span>
+                                </div>
+                                <input class="submit-btn" type="submit" value="LOGIN">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="side-service">
+                        <a id="register-now" href="#">Register now</a>
+                        <a id="forgot-password" href="#">Forgot password?</a>
+                    </div>
+                    <div class="separate-line">
+                        <div class="line"></div>
+                        <span>or</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="login-with-section">
+                        <div class="login-with-fb login-with-section-item">
+                            <div class="login-with-item-icon fb">
+                                <i class="fa-brands fa-square-facebook"></i>
+                            </div>
+                            <a href="#">Login with facebook</a>
+                        </div>
+                        <div class="login-with-twitter login-with-section-item">
+                            <div class="login-with-item-icon tw">
+                                <i class="fa-brands fa-twitter"></i>
+                            </div>
+                            <a href="#">Login with twitter</a>
+                        </div>
+                        <div class="login-with-google login-with-section-item gg">
+                            <div class="login-with-item-icon gg">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <a href="/api/v1/users/login/google">Login with google</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="theme-img">
+
+            </div>
+
+            <div class="overlay" onclick="off()"></div>
+
+            <div class="signup-form">
+                <div class="close-btn" onclick="off()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                <div class="signup-form-container">
+                    <form action="" method="post">
+                        <div class="input-section input-email">
+                            <i class="bi bi-person-circle"></i>
+                            <input type="text" name="email" placeholder="Username or email" />
+                        </div>
+                        <div class="input-section input-password">
+                            <i class="bi bi-key"></i>
+                            <input id="password" type="password" name="password" placeholder="Password">
+                            <i class="hover-eye bi bi-eye-fill"></i>
+                        </div>
+                        <div class="input-section input-password">
+                            <i class="bi bi-key"></i>
+                            <input id="password" type="password" name="password" placeholder="Re-enter password">
+                        </div>
+                        <div class="check-submit-btn">
+                            <div class="Remember-me">
+                                <input type="checkbox"> <span>Remember me</span>
+                            </div>
+                            <input class="submit-btn" type="submit" value="LOGIN">
+                        </div>
+                    </form>
+                    <div class="separate-line">
+                        <div class="line"></div>
+                        <span>or</span>
+                        <div class="line"></div>
+                    </div>
+                    <div class="login-with-section">
+                        <div class="login-with-fb login-with-section-item">
+                            <div class="login-with-item-icon fb">
+                                <i class="fa-brands fa-square-facebook"></i>
+                            </div>
+                            <a href="#">Sign up with facebook</a>
+                        </div>
+                        <div class="login-with-twitter login-with-section-item">
+                            <div class="login-with-item-icon tw">
+                                <i class="fa-brands fa-twitter"></i>
+                            </div>
+                            <a href="#">Sign up with twitter</a>
+                        </div>
+                        <div class="login-with-google login-with-section-item gg">
+                            <div class="login-with-item-icon gg">
+                                <i class="fa-brands fa-google"></i>
+                            </div>
+                            <a href="/login/google">Sign up with google</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="/js/index.js">
+    </script>
+</body>
+
+</html>

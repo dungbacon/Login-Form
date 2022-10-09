@@ -1,0 +1,27 @@
+[
+    {
+        "email": "dung@vti.com.vn",
+        "password": "admin",
+        "name": "Minh Dung"
+    },
+    {
+        "email": "peter@vti.com.vn",
+        "password": "1234",
+        "name": "Peter Griffin"
+    },
+    {
+        "email": "johnas@vti.com.vn",
+        "password": "1234",
+        "name": "Quamire"
+    },
+    {
+        "email": "griffin@vti.com.vn",
+        "password": "1234",
+        "name": "Donald Trump"
+    },
+    {
+        "email": "pico@vti.com.vn",
+        "password": "1234",
+        "name": "IronMan"
+    }
+]
