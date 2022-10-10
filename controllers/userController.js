@@ -163,7 +163,3 @@ exports.protect = catchAsync(async(req, res, next) => {
     req.user = currentUser;
     next();
 });
-
-exports.googleSignInUp = catchAsync(async(req, res, next) => {
-    console.log(req.id);
-});

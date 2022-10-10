@@ -14,19 +14,16 @@ const schema = new mongoose.Schema({
     email: {
         type: String,
         unique: true,
-        required: [true, 'Email must be provided!'],
         validate: [isEmail, 'Email must be a valid email address!']
     },
     password: {
         type: String,
-        required: [true, 'Password must be provided!'],
         minLength: 4,
         select: false,
     },
     passwordConfirmation: {
         type: String,
         minLength: 4,
-        required: [true, 'Password Confirmation must be provided!'],
         validate: {
             validator: function(passwordCf) {
                 return this.password.match(passwordCf);

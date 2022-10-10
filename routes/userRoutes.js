@@ -1,33 +1,30 @@
 const express = require('express');
 const path = require('path');
-const catchAsync = require('./../utils/catchAsync');
 const passport = require('passport');
-const googleStrategy = require('passport-google-oauth20').Strategy;
+require('./../utils/passport')
+// const googleStrategy = require('passport-google-oauth20').Strategy;
 
 const User = require('./../models/userModel');
 const userController = require('./../controllers/userController');
+const AppError = require('./../utils/AppError');
+const catchAsync = require('./../utils/catchAsync');
+
 const app = express();
 
-passport.use(new googleStrategy({
-        clientID: process.env.GOOGLE_CLIENT_ID,
-        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: '/auth/google/callback',
-        scope: ['email', 'profile'],
-
-    },
-    catchAsync(async(accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-        // Check if the user with googleId is exist?
-    })
-));
-
 const router = express.Router();
+
+router.get('/api/current_user', (req, res) => {
+    res.send(req.user);
+});
 
 router.get('/auth/google', passport.authenticate('google', {
     scope: ['profile', 'email']
 }));
 
-router.get('/auth/google/callback', passport.authenticate('google'));
+router.get('/auth/google/callback', passport.authenticate('google', {
+    successRedirect: '/info',
+    failureRedirect: '/login',
+}));
 
 router.get('/login', (req, res, next) => {
     var options = {
@@ -35,7 +32,7 @@ router.get('/login', (req, res, next) => {
     };
 
     var fileName = 'index.html';
-    res.sendFile(fileName, options, function(err) {
+    res.sendFile(fileName, options, function (err) {
         if (err) {
             next(err);
         } else {

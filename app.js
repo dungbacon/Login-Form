@@ -1,11 +1,9 @@
-const express = require('express');
 const dotenv = require('dotenv');
-const mongoose = require('mongoose');
-const passport = require('passport');
-const morgan = require('morgan');
-
 dotenv.config({ path: './config.env' });
-
+const express = require('express');
+const mongoose = require('mongoose');
+const passport = require('./utils/passport');
+const session = require('express-session');
 const globalErrorHandler = require('./controllers/ErrorController');
 const userRouter = require('./routes/userRoutes');
 
@@ -20,11 +18,27 @@ mongoose.connect(process.env.DATABASE, {
 
 const app = express();
 
+
+app.use(express.static(`${__dirname}/assets`));
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+    secret: "secret",
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+        expires: 1000 * 60 * 60 * 24 * 30,
+        secure: true,
+        httpOnly: true,
+    }
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.json());
 // Serving static files
-app.use(express.static(`${__dirname}/assets`));
 
-app.use(express.urlencoded({ extended: true }));
 
 app.use('/', userRouter);
 // Error handling
