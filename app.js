@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
+const passport = require('passport');
+const morgan = require('morgan');
 
 dotenv.config({ path: './config.env' });
 
@@ -17,13 +19,14 @@ mongoose.connect(process.env.DATABASE, {
 });
 
 const app = express();
+
 app.use(express.json());
 // Serving static files
 app.use(express.static(`${__dirname}/assets`));
 
-app.use(express.urlencoded({extended:true}));
+app.use(express.urlencoded({ extended: true }));
 
-app.use('/api/v1/users', userRouter);
+app.use('/', userRouter);
 // Error handling
 app.use(globalErrorHandler);
 

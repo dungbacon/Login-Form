@@ -3,19 +3,16 @@ const jwt = require('jsonwebtoken');
 const util = require('util');
 const crypto = require('crypto');
 const nodeMailer = require('./../emailSender/sendMailBySMTP');
-// const sendGrid = require('./../emailSender/sendGrid');
 const AppError = require('./../utils/AppError');
 const catchAsync = require('./../utils/catchAsync');
 const User = require('./../models/userModel');
 
 
 const signToken = id => {
-    return jwt.sign(
-        {
+    return jwt.sign({
             id: id
         },
-        process.env.JWT_SECRET,
-        {
+        process.env.JWT_SECRET, {
             expiresIn: process.env.JWT_EXPIRES_IN
         }
 
@@ -37,9 +34,7 @@ const createAndSendToken = (user, statusCode, res) => {
     });
 };
 
-// const users = JSON.parse(fs.readFileSync(`${__dirname}/../dev-data/user.json`, 'utf-8'));
-
-exports.login = catchAsync(async (req, res, next) => {
+exports.login = catchAsync(async(req, res, next) => {
     const { email, password } = req.body;
     if (!email || !password) {
         return next(new AppError('Email and password are required', 400));
@@ -57,7 +52,7 @@ exports.login = catchAsync(async (req, res, next) => {
 
 });
 
-exports.updatePassword = catchAsync(async (req, res) => {
+exports.updatePassword = catchAsync(async(req, res) => {
     const newPw = req.body.password;
     const id = req.params.id;
     console.log(newPw, id);
@@ -72,7 +67,7 @@ exports.updatePassword = catchAsync(async (req, res) => {
 });
 
 
-exports.forgotPassword = catchAsync(async (req, res, next) => {
+exports.forgotPassword = catchAsync(async(req, res, next) => {
     const email = req.body.email;
     console.log(email);
     const user = await User.findOne({ email: email });
@@ -108,7 +103,7 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     }
 });
 
-exports.resetPassword = catchAsync(async (req, res, next) => {
+exports.resetPassword = catchAsync(async(req, res, next) => {
     console.log(req.params.token);
     // 1: Take the resetToken out of req and create password reset token
     const currentPasswordResetToken = await crypto.createHmac('sha256', process.env.JWT_SECRET)
@@ -117,10 +112,10 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     // 2: Check user validation by passwordResetToken and passwordResetExpires > Date.now()
     const user = await User.findOne({
         passwordResetToken: currentPasswordResetToken,
-        passwordResetExpires: {$gt: Date.now()}
+        passwordResetExpires: { $gt: Date.now() }
     });
-    if(!user){
-        return next(new AppError('Your reset password token has expired!',404))
+    if (!user) {
+        return next(new AppError('Your reset password token has expired!', 404))
     }
     console.log(user);
 
@@ -132,7 +127,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
     createAndSendToken(user, 200, res);
 });
 
-exports.getAllUser = catchAsync(async (req, res) => {
+exports.getAllUser = catchAsync(async(req, res) => {
     const users = await User.find();
     res.status(200).json({
         status: 'success',
@@ -140,7 +135,7 @@ exports.getAllUser = catchAsync(async (req, res) => {
     })
 });
 
-exports.protect = catchAsync(async (req, res, next) => {
+exports.protect = catchAsync(async(req, res, next) => {
     // 1: Get the token
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
@@ -167,4 +162,8 @@ exports.protect = catchAsync(async (req, res, next) => {
     // 4: set user
     req.user = currentUser;
     next();
+});
+
+exports.googleSignInUp = catchAsync(async(req, res, next) => {
+    console.log(req.id);
 });

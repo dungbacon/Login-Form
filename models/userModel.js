@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const crypto = require('crypto');
-const e = require('express');
 
 const isEmail = (email) => {
     return email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/);
@@ -24,12 +23,12 @@ const schema = new mongoose.Schema({
         minLength: 4,
         select: false,
     },
-    passwordConfirmation:{
+    passwordConfirmation: {
         type: String,
         minLength: 4,
         required: [true, 'Password Confirmation must be provided!'],
         validate: {
-            validator: function(passwordCf){
+            validator: function(passwordCf) {
                 return this.password.match(passwordCf);
             },
             message: 'Password confirmation does not match'
@@ -49,10 +48,11 @@ const schema = new mongoose.Schema({
         type: Date
     },
     passwordResetExpires: Date,
-    passwordResetToken: String
+    passwordResetToken: String,
+    googleID: String
 });
 
-schema.pre('save', async function (next) {
+schema.pre('save', async function(next) {
     if (!this.isModified('password')) {
         return next();
     } else {
@@ -62,7 +62,7 @@ schema.pre('save', async function (next) {
     }
 });
 
-schema.pre('save', async function (next) {
+schema.pre('save', async function(next) {
     const user = this;
     if (user.isModified('password')) {
         user.passwordChangedAt = Date.now();
@@ -71,7 +71,7 @@ schema.pre('save', async function (next) {
     }
 });
 
-schema.methods.ChangePasswordAfter = function (issueAtTime) {
+schema.methods.ChangePasswordAfter = function(issueAtTime) {
     // console.log(this.passwordChangedAt.getTime()/1000);
     if (!this.passwordChangedAt) {
         this.passwordChangedAt = Date.now().getTime() / 1000;
@@ -79,11 +79,11 @@ schema.methods.ChangePasswordAfter = function (issueAtTime) {
     return issueAtTime > this.passwordChangedAt.getTime() / 1000;
 };
 
-schema.methods.correctPassword = async function (candidatePassword, userPassword) {
+schema.methods.correctPassword = async function(candidatePassword, userPassword) {
     return await bcrypt.compare(candidatePassword, userPassword);
 };
 
-schema.methods.createResetToken = function (req) {
+schema.methods.createResetToken = function(req) {
     const resetToken = crypto.randomBytes(32).toString('hex');
     this.passwordResetToken = crypto
         // Create Hmac object with algorithm sha256 and secret key (Similar to createHash())
